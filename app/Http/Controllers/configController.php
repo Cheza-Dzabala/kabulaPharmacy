@@ -129,4 +129,11 @@ class configController extends Controller
         return $attachRoles;
     }
 
+    public function newRoles(Request $request)
+    {
+        $roleClass = new rolesClass();
+        $newRole = $roleClass->newRoles($request);
+        return $newRole;
+    }
+
 }

@@ -24,26 +24,27 @@
         <div class="col-md-8">
             <!-- Basic layout-->
 
-                    <form class="form-horizontal" action="#">
+                    <form class="form-horizontal" action="{{ route('users.new.save') }}" method="post">
+                        {{ csrf_field() }}
                         <legend class="text-bold">User Details</legend>
                         <div class="form-group">
                                 <label class="control-label col-lg-2">Full Name</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control" name="name" required>
                                 </div>
                         </div>
 
                         <div class="form-group">
                                 <label class="control-label col-lg-2">Username</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" name="username">
+                                    <input type="text" class="form-control" name="username" required>
                                 </div>
                         </div>
 
                         <div class="form-group">
                                 <label class="control-label col-lg-2">Password</label>
                                 <div class="col-lg-10">
-                                    <input type="password" class="form-control" name="password">
+                                    <input type="password" class="form-control" name="password" required>
                                 </div>
                         </div>
 
@@ -59,14 +60,14 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2">Email</label>
                             <div class="col-lg-10">
-                                <input type="email" class="form-control" name="email">
+                                <input type="email" class="form-control" name="email" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-lg-2">Phone Number</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="mobile">
+                                <input type="text" class="form-control" name="mobile" required>
                             </div>
                         </div>
 
@@ -75,14 +76,22 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2">Designation</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="designation">
+                                <input type="text" class="form-control" name="designation" required>
                             </div>
                         </div>
 
                         <div class="form-group">
+                            <label class="control-label col-lg-2">Id Number</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" name="id_number" required >
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
                             <label class="control-label col-lg-2">Employment Date</label>
                             <div class="col-lg-10">
-                                <input type="date" class="form-control" name="employment_date">
+                                <input type="date" class="form-control" name="employment_date" required>
                             </div>
                         </div>
 
@@ -97,6 +106,11 @@
                                 </select>
                             </div>
                         </div>
+
+                        <legend class="text-bold">Action</legend>
+                        <button class="btn bg-primary-300 btn-block btn-float btn-float-sm"  type="submit">
+                            <i class="icon-pencil"></i> <span>Save Changes</span>
+                        </button>
 
                     </form>
             <!-- /basic layout -->

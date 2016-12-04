@@ -10,10 +10,14 @@
 @section('content')
 
     <div class="row">
+
         <div class="panel panel-flat">
             <div class="panel-body">
               <table class="table table-md invoice-archive">
                   <thead>
+                  <button class="btn bg-indigo-600 btn-float-sm pull-right" type="button" data-toggle="modal" data-target="#newRole">
+                      <i class="icon-new"></i> <span>New Role</span>
+                  </button>
                     <th class="col-sm-6">Role Name</th>
                     <th>Description</th>
                     <th>Action</th>
@@ -48,3 +52,4 @@
 
 @endsection
 
+@include('partials.modals.roles.newRole')

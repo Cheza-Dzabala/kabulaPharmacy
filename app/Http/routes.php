@@ -109,6 +109,12 @@ Route::group(['middleware' => 'authCheck'], function(){
                 'uses' => 'configController@rolesIndex'
             ]);
 
+        Route::post('/configuration/roles/',
+            [
+                'as' => 'config-roles.new',
+                'uses' => 'configController@newRoles'
+            ]);
+
         Route::get('/configuration/roles/{roleName}/attach-permissions',
             [
                 'as' => 'config-roles.attach',
@@ -332,6 +338,14 @@ Route::group(['middleware' => 'authCheck'], function(){
             'uses' => 'usersController@newUser'
         ]);
 
+    Route::post('users/new',
+        [
+            'as' => 'users.new.save',
+            'uses' => 'usersController@saveNew'
+        ]);
+
+
+
     Route::get('users/manage',
         [
             'as' => 'users.manage',
@@ -343,6 +357,14 @@ Route::group(['middleware' => 'authCheck'], function(){
             'as' => 'users.edit',
             'uses' => 'usersController@editUser'
         ]);
+
+    Route::post('users/edit/{id}',
+        [
+            'as' => 'users.edit.save',
+            'uses' => 'usersController@saveEdited'
+        ]);
+
+
 });
 
 

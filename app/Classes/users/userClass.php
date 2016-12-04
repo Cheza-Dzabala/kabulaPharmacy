@@ -11,6 +11,7 @@ namespace App\Classes\users;
 
 use App\Role;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class userClass
 {
@@ -18,6 +19,27 @@ class userClass
     {
         $roles = Role::get();
         return view('users.new', compact('roles'));
+    }
+
+
+    public function saveNew($request)
+    {
+        $role = Role::whereId($request->role)->first();
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->email = $request->email;
+        $user->mobile = $request->mobile;
+        $user->designation = $request->designation;
+        $user->id_number = $request->id_number;
+        $user->employment_date = $request->employment_date;
+        $user->save();
+
+        $user->attachRole($role);
+
+        return redirect()->route('users.manage');
     }
 
     public function manage()
@@ -30,16 +52,29 @@ class userClass
     {
         $roles = Role::get();
         $user = User::whereId($id)->first();
-
-        foreach ($roles as $role)
-        {
-            if ($user->hasRole($role))
-            {
-                $userRole = $role;
-            }
-        }
-
+        $userRole = $user->roles()->first();
         return view('users.edit', compact('user', 'roles', 'userRole'));
+    }
+
+    public function saveEdited($request)
+    {
+        //dd($request);
+        $role = Role::whereId($request->role)->first();
+        $user = User::whereId($request->id)->first();
+
+        $user->detachRoles($user->roles); //Removed Associated Roles
+        $user->attachRole($role); //Attach New Role
+
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->mobile = $request->mobile;
+        $user->designation = $request->designation;
+        $user->id_number = $request->id_number;
+        $user->employment_date = $request->employment_date;
+        $user->save();
+
+        return redirect()->route('users.manage');
     }
 
 }

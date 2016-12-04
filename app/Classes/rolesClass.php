@@ -42,4 +42,15 @@ class rolesClass
         return view('config.roles.index', compact('roles'));
     }
 
+    public function newRoles($request)
+    {
+        $role = new Role();
+        $role->name = $request->name;
+        $role->display_name = $request->display_name;
+        $role->description = $request->description;
+        $role->save();
+
+        return redirect()->route('config-roles');
+    }
+
 }
