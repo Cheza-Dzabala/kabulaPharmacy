@@ -12,6 +12,11 @@ use App\Http\Requests;
 class productController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('productsAuth');
+    }
+
     public function index()
     {
         $products = products::get();

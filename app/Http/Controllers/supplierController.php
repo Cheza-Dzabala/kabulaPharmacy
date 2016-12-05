@@ -10,6 +10,12 @@ use App\Http\Requests;
 class supplierController extends Controller
 {
     //
+
+    public function __construct()
+    {
+        $this->middleware('supplierAuth');
+    }
+
     public function index()
     {
         $supplierClass = new supplierClass();

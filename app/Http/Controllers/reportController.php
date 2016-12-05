@@ -10,6 +10,12 @@ use App\Http\Requests;
 class reportController extends Controller
 {
     //
+
+    public function __construct()
+    {
+        $this->middleware('reportsAuth');
+    }
+
     public function index()
     {
         return view('reports.index');

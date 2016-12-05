@@ -36,9 +36,10 @@ Route::group(['middleware' => 'authCheck'], function(){
             ]
         );
 
-    /*
-     * Stock Configuration Routes
-     */
+    Route::group(['middleware' => 'stockAuth'], function () {
+        /*
+    * Stock Configuration Routes
+    */
         Route::get('/configuration/stock/department',
             [
                 'as' => 'stock-dpt-config',
@@ -96,9 +97,12 @@ Route::group(['middleware' => 'authCheck'], function(){
             ]
         );
 
-    /*
-     * End Stock Configuration Routes
-     */
+        /*
+         * End Stock Configuration Routes
+         */
+    });
+
+    Route::group(['middleware' => 'permissionsAuth'], function () {
         /*
          * Start Roles COnfiguration Routes
          */
@@ -131,6 +135,8 @@ Route::group(['middleware' => 'authCheck'], function(){
         /*
          * End Roles COnfiguration Routes
          */
+    });
+
     /**
      * End Configuration Routes
      */

@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 class stockController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('stockAuth');
+    }
+
     public function index()
     {
         $stockClass = new stockClass();

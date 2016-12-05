@@ -10,6 +10,11 @@ use App\Http\Requests;
 class usersController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('usersAuth');
+    }
+
     public function index()
     {
         return view('users.index');

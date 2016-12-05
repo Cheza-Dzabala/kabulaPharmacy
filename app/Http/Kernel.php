@@ -50,5 +50,14 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        //Permissions Middleware
+        'stockAuth' => \App\Http\Middleware\stockAuth::class,
+        'posAuth' => \App\Http\Middleware\posAuth::class,
+        'orderAuth' => \App\Http\Middleware\orderAuth::class,
+        'supplierAuth' => \App\Http\Middleware\supplierAuth::class,
+        'usersAuth' => \App\Http\Middleware\usersAuth::class,
+        'reportsAuth' => \App\Http\Middleware\reportsAuth::class,
+        'productsAuth' => \App\Http\Middleware\productsAuth::class,
+        'permissionsAuth' => \App\Http\Middleware\permissionsAuth::class,
     ];
 }

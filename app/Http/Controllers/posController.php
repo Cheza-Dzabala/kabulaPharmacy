@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Auth;
 class posController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('posAuth');
+    }
+
     public function index()
     {
         return view('pos.index');
