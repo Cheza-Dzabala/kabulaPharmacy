@@ -56,7 +56,6 @@ class stockClass {
             'expiry_date' => $request['expiry_date'],
             'quantity' => $request['quantity'],
             'purchaseCost' => $request['purchaseCost'],
-            'markup' => $request['markup'],
             'batchNumber' => $request['batchNumber'],
         ]);
 
@@ -95,28 +94,51 @@ class stockClass {
             'taxProfile1' => $request['taxProfile1'],
             'taxProfile2' => $request['taxProfile2'],
             'reorderLevel' => $request['reorderLevel'],
+            'price' => $request['price'],
+            'selling_units' => $request['selling_units'],
         ]);
         return $stock;
     }
 
     public function updateStockItem(Request $request, $id)
     {
-
-
         $stockItem = stock::whereId($id)->first();
 
         $stockItem->genericName = $request['genericName'];
         $stockItem->brandName = $request['brandName'];
         $stockItem->type = $request['type'];
-        $stockItem->batchNumber = $request['batchNumber'];
         $stockItem->strength = $request['strength'];
         $stockItem->departmentId = $request['departmentId'];
-        $stockItem->purchaseCost = $request['purchaseCost'];
-        $stockItem->departmentId = $request['departmentId'];
-        $stockItem->markup = $request['markup'];
+        $stockItem->price = $request['price'];
         $stockItem->taxProfile1 = $request['taxProfile1'];
         $stockItem->taxProfile2 = $request['taxProfile2'];
+        $stockItem->selling_units = $request['selling_units'];
         $stockItem->save();
+
+        return redirect()->route('stock');
+    }
+
+
+    public function add_stock($id)
+    {
+        $stockItem = stock::whereId($id)->first();
+        return $stockItem;
+    }
+
+    public function add_stock_save($request)
+    {
+        $stockItem = stock::whereId($request->stockId)->first();
+        $stockItem->currentLevel += $request->quantity;
+        $stockItem->save();
+
+        stockDetails::create([
+            'orderId' => $request->orderId,
+            'stockId' => $request->stockId,
+            'quantity' => $request->quantity,
+            'batchNumber' => $request->batchNumber,
+            'expiry_date' => $request->expiry_date,
+            'purchaseCost' => $request->purchaseCost,
+        ]);
 
         return redirect()->route('stock');
     }

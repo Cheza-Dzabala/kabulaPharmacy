@@ -30,7 +30,8 @@ class posClass {
         foreach ($request['stockItem'] as $key => $value)
         {
             $stock = stock::whereId($key)->first();
-            $stock->currentLevel = $stock->currentLevel - $value;
+            $subtractQTY = $value * $stock->selling_units;
+            $stock->currentLevel = $stock->currentLevel - $subtractQTY;
             $stock->save();
 
             $details = stockDetails::whereStockid($key)->first();
@@ -39,14 +40,12 @@ class posClass {
                 'transactionId' => $transactionId,
                 'stockId' => $key,
                 'stockAmount' => $value,
-                'purchaseMarkup' => $details->markup
+                'price' => $stock->price
             ]);
-
-
 
             $stockArray = array(
                 'purchaseAmount' => $value,
-                'purchaseCost' => (($details->markup / 100) * $details->purchaseCost) * $value,
+                'purchaseCost' => $stock->price,
             );
 
             $purchasedItems = array_add($purchasedItems, $stock->brandName, $stockArray);

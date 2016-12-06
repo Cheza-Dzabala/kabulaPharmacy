@@ -73,8 +73,8 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="{!!  route('addStock', ['slug' => $value['id']]) !!}"><i class="icon-eye"></i> Manage Item</a></li>
-                                <li><a href="#"><i class="icon-plus3"></i> Add Stock</a></li>
+                                <li><a href="{!!  route('editStock', ['slug' => $value['id']]) !!}"><i class="icon-eye"></i> Manage Item</a></li>
+                                <li><a href="{{ route('addStock', $value['id']) }}"><i class="icon-plus3"></i> Add Stock</a></li>
                                 <li><span class="divider"></span></li>
                             </ul>
                         </li>

@@ -16,10 +16,10 @@
             <div class="panel-body">
                 <div class="col-md-6">
                     <div class="category-content">
-                        <button class="btn bg-teal-300 btn-block btn-float btn-float-lg" type="button"  data-toggle="modal" data-target="#stockConfigModal">
+                        <a href="{{ route('stock.reports') }}" class="btn bg-teal-300 btn-block btn-float btn-float-lg">
                             <i class="icon-pie-chart7"></i> <span>Stock Reports</span>
-                        </button>
-                        <a href="{{ route('sales.reports') }}" class="btn bg-teal-400 btn-block btn-float btn-float-lg" type="button"><i class="icon-cash4"></i> <span>Sales Reports</span></a>
+                        </a>
+                        <a href="{{ route('sales.reports') }}" class="btn bg-teal-400 btn-block btn-float btn-float-lg"><i class="icon-cash4"></i> <span>Sales Reports</span></a>
                     </div>
                 </div>
 

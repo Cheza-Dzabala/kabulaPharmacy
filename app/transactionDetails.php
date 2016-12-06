@@ -11,6 +11,6 @@ class transactionDetails extends Model
 
     protected $fillable =
         [
-            'transactionId', 'stockId', 'stockAmount', 'purchaseMarkup'
+            'transactionId', 'stockId', 'stockAmount', 'price'
         ];
 }

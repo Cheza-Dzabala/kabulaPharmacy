@@ -2,7 +2,7 @@
 
 
 @section('pageTitle')
-    Generic Names
+    Sales Reports
 @endsection
 
 @section('scripts')
@@ -36,6 +36,7 @@
             <th>Attendee Name</th>
             <th>Transaction Value</th>
             <th>Quantity Bought</th>
+            <th>Selling Units</th>
             <th>Stock Item</th>
             <th class="text-center">Actions</th>
             </thead>
@@ -47,6 +48,7 @@
                     <td>{{ $salesReport->attendant }}</td>
                     <td>{{ $salesReport->amount }}</td>
                     <td>{{ $salesReport->stockAmount }}</td>
+                    <td>{{ $salesReport->selling_units }}</td>
                     <td>{{ $salesReport->item }}</td>
                     <td class="text-center">
                         <ul class="icons-list">

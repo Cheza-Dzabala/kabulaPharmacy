@@ -170,8 +170,8 @@ Route::group(['middleware' => 'authCheck'], function(){
 
     Route::get('/stock/update/{id}',
         [
-            'as' => 'addStock',
-            'uses' => 'stockController@add_stock'
+            'as' => 'editStock',
+            'uses' => 'stockController@edit_stock'
         ]
     );
 
@@ -181,6 +181,21 @@ Route::group(['middleware' => 'authCheck'], function(){
             'uses' => 'stockController@update_stock'
         ]
     );
+
+    Route::get('/stock/add/{id}',
+        [
+            'as' => 'addStock',
+            'uses' => 'stockController@add_stock'
+        ]
+    );
+
+    Route::post('/stock/add/{id}',
+        [
+            'as' => 'addStock.save',
+            'uses' => 'stockController@add_stock_save'
+        ]
+    );
+
 
 
 
@@ -259,6 +274,13 @@ Route::group(['middleware' => 'authCheck'], function(){
             'uses' => 'orderController@generateOrder'
         ]);
 
+    Route::get('order_details/get_pdf/{id}',
+        [
+            'as' => 'order.pdf',
+            'uses' => 'orderController@getPdf'
+        ]
+    );
+
     Route::get('order_details/place_order/{id}',
         [
            'as' => 'order.place',
@@ -311,6 +333,13 @@ Route::group(['middleware' => 'authCheck'], function(){
         [
             'as' => 'sales.reports',
             'uses' => 'reportController@salesReport'
+        ]);
+
+
+    Route::get('stock_reports',
+        [
+            'as' => 'stock.reports',
+            'uses' => 'reportController@stockReport'
         ]);
 
 

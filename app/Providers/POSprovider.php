@@ -37,8 +37,6 @@ class POSprovider extends ServiceProvider
 
             foreach ($stocks as $stock) {
                 $details = stockDetails::whereStockid($stock->id)->first();
-                $cost = (($details->markup / 100) * $details->purchaseCost);
-                $stock = array_add($stock, 'price', $cost);
             }
             //dd($stocks);
 

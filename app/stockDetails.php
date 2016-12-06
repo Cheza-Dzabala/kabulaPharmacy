@@ -15,7 +15,7 @@ class stockDetails extends Model
         'expirationDate',
         'quantity',
         'batchNumber',
-        'markup',
+        'price',
         'purchaseCost',
         'expiry_date',
     ];

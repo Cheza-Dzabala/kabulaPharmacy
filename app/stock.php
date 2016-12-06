@@ -21,6 +21,8 @@ class stock extends Model
             'reorderLevel',
             'type',
             'strength',
-            'currentLevel'
+            'currentLevel',
+            'price',
+            'selling_units',
         ];
 }

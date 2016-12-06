@@ -83,15 +83,6 @@
                             @endif
                         </div>
 
-                        <div class="form-group{{ $errors->has('batchNumber') ? ' has-error' : '' }}" >
-                            <label>Batch Number:</label>
-                            <input type="text" class="form-control" placeholder="batch Number" name="batchNumber" value="{{ $stock->batchNumber }}">
-                            @if ($errors->has('batchNumber'))
-                                <span class="help-block">
-                                        <strong>{{ $errors->first('batchNumber') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
 
                         <div class="form-group{{ $errors->has('strength') ? ' has-error' : '' }}" >
                             <label>Strength in Mg:</label>
@@ -99,6 +90,16 @@
                             @if ($errors->has('strength'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('strength') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group{{ $errors->has('selling_units') ? ' has-error' : '' }}" >
+                            <label>Selling QTY:</label>
+                            <input type="number" class="form-control" name="selling_units" placeholder="Price" value="{{ $stock->selling_units }}">
+                            @if ($errors->has('selling_units'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('selling_units') }}</strong>
                                     </span>
                             @endif
                         </div>
@@ -121,25 +122,16 @@
 
                         <h5 class="panel-title">Pricing Details</h5>
 
-                        <div class="form-group{{ $errors->has('purchaseCost') ? ' has-error' : '' }}">
-                            <label>Purchase Cost:</label>
-                            <input type="number" class="form-control" name="purchaseCost" placeholder="Purchase Cost" value="{{ $stock->purchaseCost }}">
-                            @if ($errors->has('purchaseCost'))
+                        <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}" >
+                            <label>Price:</label>
+                            <input type="number" class="form-control" name="price" placeholder="Price" value="{{ $stock->price }}">
+                            @if ($errors->has('price'))
                                 <span class="help-block">
-                                        <strong>{{ $errors->first('purchaseCost') }}</strong>
+                                        <strong>{{ $errors->first('price') }}</strong>
                                     </span>
                             @endif
                         </div>
 
-                        <div class="form-group{{ $errors->has('markup') ? ' has-error' : '' }}" >
-                            <label>Profit Percentage:</label>
-                            <input type="number" class="form-control" name="markup" placeholder="Profit Percentage" value="{{ $stock->markup }}">
-                            @if ($errors->has('markup'))
-                                <span class="help-block">
-                                        <strong>{{ $errors->first('markup') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
 
                         <div class="form-group{{ $errors->has('taxProfile1') ? ' has-error' : '' }}">
                             <label>Tax Profile</label>

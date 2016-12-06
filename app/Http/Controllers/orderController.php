@@ -4,17 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Classes\orders\orderClass;
 use App\orders;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Vsmoraes\Pdf\Pdf as PDF;
+
 class orderController extends Controller
 {
     //
+    private $pdf;
 
-    public function __construct()
+    public function __construct(PDF $pdf)
     {
         $this->middleware('orderAuth');
+        $this->pdf = $pdf;
     }
 
     public function index()
@@ -70,8 +75,8 @@ class orderController extends Controller
     public function generateOrder($id)
     {
         $orderClass = new orderClass();
-        $generateOrder = $orderClass->generateOrder($id);
-        return $generateOrder;
+        list($order, $supplier, $orderDetails, $notes) = $orderClass->generateOrder($id);
+        return view('orders.generate.new', compact('order', 'supplier', 'orderDetails', 'notes'));
     }
 
     public function placeOrder($id)
@@ -86,5 +91,19 @@ class orderController extends Controller
         $orderClass = new orderClass();
         $activate = $orderClass->activate($id);
         return $activate;
+    }
+
+    public function getPdf($id)
+    {
+        $orderClass = new orderClass();
+        list($order, $supplier, $orderDetails, $notes) = $orderClass->generateOrder($id);
+
+        $html = view('orders.generate.new', compact('order', 'supplier', 'orderDetails', 'notes'))->render();
+        return $this->pdf
+            ->load($html)
+            ->show();
+
+
+     //   return view('orders.pdf.order', compact('order', 'supplier', 'orderDetails', 'notes'));
     }
 }

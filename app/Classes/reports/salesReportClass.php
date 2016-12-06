@@ -30,6 +30,7 @@ class salesReportClass
             $transaction = array_add($transaction, 'attendant', $employee->name);
             $transaction = array_add($transaction, 'amount', $sale->amount);
             $transaction = array_add($transaction, 'item', $item->brandName);
+            $transaction = array_add($transaction, 'selling_units', $item->selling_units);
             $transaction = array_add($transaction, 'date', $saleDate);
         }
         return $transactions;

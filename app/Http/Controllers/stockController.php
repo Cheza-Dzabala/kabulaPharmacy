@@ -39,7 +39,7 @@ class stockController extends Controller
     }
 
 
-    public function add_stock($id)
+    public function edit_stock($id)
     {
         $stockDependencies = new stockClass();
         list($taxProfiles, $departments, $orders, $genericNames, $stockTypes) = $stockDependencies->newStockDependencies();
@@ -53,6 +53,21 @@ class stockController extends Controller
         $stockClass = new stockClass();
         $updateStockItem = $stockClass->updateStockItem($request, $id);
         return $updateStockItem;
+    }
+
+    public function add_stock($id)
+    {
+        $stockClass = new stockClass();
+        list($taxProfiles, $departments, $orders, $genericNames, $stockTypes) = $stockClass->newStockDependencies();
+        $stockItem = $stockClass->add_stock($id);
+        return view('stock.add', compact('stockItem', 'orders'));
+    }
+
+    public function add_stock_save(Request $request)
+    {
+        $stockClass = new stockClass();
+        $addStock = $stockClass->add_stock_save($request);
+        return $addStock;
     }
 
 }

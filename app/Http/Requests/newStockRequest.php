@@ -34,11 +34,12 @@ class newStockRequest extends Request
             'strength' => 'required',
             'departmentId' => 'required',
             'purchaseCost' => 'required',
-            'markup' => 'required',
+            'price' => 'required',
             'taxProfile1' => 'required',
             'taxProfile2' => 'required',
             'quantity' => 'required',
             'reorderLevel' => 'required',
+            'selling_units' => 'required',
         ];
     }
 }

@@ -208,7 +208,9 @@ class orderClass {
                     $detail = array_add($detail, 'itemType', $itemType->name);
                 }
         }
-        return view('orders.generate.new', compact('order', 'supplier', 'orderDetails', 'notes'));
+
+        return array($order, $supplier, $orderDetails, $notes);
+
     }
 
     public function placeOrder($id)
