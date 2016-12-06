@@ -167,7 +167,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                    <label>Profit Percentage:</label>
+                    <label>Price:</label>
                     <input type="number" class="form-control" name="price" placeholder="Price">
                     @if ($errors->has('price'))
                         <span class="help-block">
