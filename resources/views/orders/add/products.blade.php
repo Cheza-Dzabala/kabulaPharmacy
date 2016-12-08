@@ -45,6 +45,7 @@
                 <thead>
                 <tr>
                     <th>Selected</th>
+                    <th>Generic Name</th>
                     <th>Item Name</th>
                     <th>Strength</th>
                     <th>Type</th>
@@ -61,6 +62,9 @@
                                     <input type="hidden" value="{{ $product->id }}" name="item[{{ $i }}]">
                                 </label>
                             </div>
+                        </td>
+                        <td>
+                            {{ $product->genericName }}
                         </td>
                         <td>
                             {{ $product->brand_name }}

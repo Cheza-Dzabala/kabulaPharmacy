@@ -45,6 +45,7 @@
               <thead>
               <tr>
                   <th>Selected</th>
+                  <th>Generic Name</th>
                   <th>Item Name</th>
                   <th>Purchase Cost</th>
                   <th>Strength</th>
@@ -65,9 +66,15 @@
                           </div>
                       </td>
                       <td>
+                          {{ $stock->generic_Name }}
+                      </td>
+
+                      <td>
                           {{ $stock->brandName }}
                           <input type="hidden" name="name[{{ $i }}]" value="{{ $stock->brandName }}" class="form-control" >
                       </td>
+
+
                       <td>
                           {{ $stock->purchaseCost }}
                           <input type="hidden" name="purchaseCost[{{ $i }}]" value="{{ $stock->purchaseCost }}" class="form-control" >

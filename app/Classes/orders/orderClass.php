@@ -2,6 +2,7 @@
 namespace App\Classes\orders;
 
 use App\config;
+use App\genericNames;
 use App\Http\Requests\newOrderRequest;
 use App\orderDetails;
 use App\orders;
@@ -82,7 +83,10 @@ class orderClass {
         foreach ($stocks as $stock)
         {
             $type = stockTypes::whereId($stock->type)->first();
+            $genericName =  genericNames::whereId($stock->genericName)->first();
             array_add($stock, 'typeName', $type->name);
+            array_add($stock, 'generic_Name', $genericName->name);
+
         }
         return view('orders.add.stock', compact('stocks', 'id'));
     }
@@ -181,7 +185,9 @@ class orderClass {
         foreach ($products as $product)
         {
             $type = stockTypes::whereId($product->type)->first();
+            $genericName =  genericNames::whereId($product->generic_name_id)->first();
             array_add($product, 'typeName', $type->name);
+            array_add($product, 'genericName', $genericName->name);
         }
 
         return view('orders.add.products', compact('products', 'id'));
